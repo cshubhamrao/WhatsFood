@@ -1,5 +1,5 @@
 #page title
-page_title                                :                                           # Automatically populates with app name if not set and if iOS app ID is set. Otherwise enter manually.
+page_title                                : Easy Lunch                                # Automatically populates with app name if not set and if iOS app ID is set. Otherwise enter manually.
 
 # App Info
 ios_app_id                                : 1234793120                                # Required. Enter iOS app ID to automatically populate name, price and icons (e.g. 718043190).
@@ -45,8 +45,6 @@ features                                  :
   - title                                 : Video Support
     description                           : Preview app video on the iPhone device simply by placing your video files in the videos folder.
     fontawesome_icon_name                 : play-circle
-
-
 
 # Theme Settings
 topbar_color                              : "#000000"
