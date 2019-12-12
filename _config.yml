@@ -40,7 +40,7 @@ features                                  :
     
   - title                                 : Recurring
     description                           : Fire-and-forget, set up once and enjoy the daily group orders. 
-    fontawesome_icon_name                 : repeat
+    fontawesome_icon_name                 : history
 
   - title                                 : Reminders
     description                           : Gentle, private reminders to members who haven't replied automatically done.
@@ -63,7 +63,7 @@ topbar_color                              : "#000000"
 topbar_transparency                       : 0.0
 topbar_title_color                        : "#ffffff"
 
-cover_image                               : assets/rachel-park-hrlvr2ZlUNk-unsplash.jpg # Replace with alternative image path or image URL.
+cover_image                               : assets/group-of-people-making-toast-3184183.jpg # Replace with alternative image path or image URL.
 cover_overlay_color                       : "#363b3d"
 cover_overlay_transparency                : 0.4
 
