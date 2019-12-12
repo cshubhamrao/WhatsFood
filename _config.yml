@@ -35,27 +35,27 @@ youtube_username                          :
 features                                  :
 
   - title                                 : Easy Group Orders
-    description                           : Designed for GitHub Pages. Fork. Edit _config.yml. Upload screenshot/video. Push to gh-pages branch. Voilá!
+    description                           : From large to small groups, order food the smart way.   
     fontawesome_icon_name                 : users
     
   - title                                 : Recurring
-    description                           : Preview your app in the context of an iPhone device. Five different device colors included.
-    fontawesome_icon_name                 : mobile
+    description                           : Fire-and-forget, set up once and enjoy the daily group orders. 
+    fontawesome_icon_name                 : repeat
 
   - title                                 : Reminders
-    description                           : Preview app video on the iPhone device simply by placing your video files in the videos folder.
+    description                           : Gentle, private reminders to members who haven't replied automatically done.
     fontawesome_icon_name                 : play-circle
 
   - title                                 : Restaurant Picker (soon)
-    description                           : Preview app video on the iPhone device simply by placing your video files in the videos folder.
+    description                           : Making it fun to decide on a restaurant as a group. 
     fontawesome_icon_name                 : map-marker-alt
 
   - title                                 : Automatic Order (soon)
-    description                           : Preview app video on the iPhone device simply by placing your video files in the videos folder.
+    description                           : Integration with major delivery networks avoid manual & error prone re-entry of the order.
     fontawesome_icon_name                 : magic
 
   - title                                 : Payments & Bill Splitting (soon)
-    description                           : Preview app video on the iPhone device simply by placing your video files in the videos folder.
+    description                           : Fully integrated payments including the nasty part to split the bill according to orders.
     fontawesome_icon_name                 : credit-card
 
 # Theme Settings
