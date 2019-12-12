@@ -1,0 +1,516 @@
+{
+  "description": "Barry the Barista-Bot",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "InitialState",
+      "properties": {
+        "offset": {
+          "x": 30,
+          "y": -340
+        },
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC4fcdc109b882daeeb43a656a4383fb32/Flows/FW1ad5ffa0d839fd208908eb61d3bf7f88"
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": "FF3b6e431776b1a44d13c04b11a0ca6a03",
+          "uuid": "863427c8-3762-433c-b02e-c63c7ba629f1"
+        },
+        {
+          "event": "incomingCall",
+          "conditions": [],
+          "next": null,
+          "uuid": "f1a9f627-9b48-4001-928c-b50da668174b"
+        },
+        {
+          "event": "incomingRequest",
+          "conditions": [],
+          "next": "FF3b6e431776b1a44d13c04b11a0ca6a03",
+          "uuid": "6ebee355-82ce-4bee-9dde-845970ff4fd4"
+        }
+      ],
+      "sid": "FF7f1c873755ed856754207ba398aa71cd"
+    },
+    {
+      "name": "send_message_1",
+      "type": "Message",
+      "properties": {
+        "offset": {
+          "x": -340,
+          "y": 150
+        },
+        "body": "Seems like you do not want to order. See you tomorrow.",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": null,
+          "uuid": "bb0e968c-8dfe-4156-a3af-a73265058b0a"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "56c93add-238a-4464-90a3-16c1daa7e525"
+        }
+      ],
+      "sid": "FFa9a8609e27b29cb6f0bf893b09caa51e"
+    },
+    {
+      "name": "creator_phone",
+      "type": "Webhook",
+      "properties": {
+        "offset": {
+          "x": -10,
+          "y": -150
+        },
+        "method": "POST",
+        "url": "https://us-central1-chatbot-100.cloudfunctions.net/count_yes",
+        "body": "{{flow.data}}",
+        "timeout": null,
+        "parameters": null,
+        "save_response_as": null,
+        "content_type": "application/json;charset=utf-8"
+      },
+      "transitions": [
+        {
+          "event": "success",
+          "conditions": [],
+          "next": "FF62d3958a51e4b70fd0335ef8a2f4e2b5",
+          "uuid": "1c1befb7-9aa8-4877-bee2-1209bedebe43"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": "FFa9a8609e27b29cb6f0bf893b09caa51e",
+          "uuid": "f156d308-210a-44b4-9b9b-4951cbebc186"
+        }
+      ],
+      "sid": "FFf95dff3d9bed206317e382de360ad63f"
+    },
+    {
+      "name": "FlowChoose",
+      "type": "Branch",
+      "properties": {
+        "offset": {
+          "x": 360,
+          "y": -160
+        },
+        "input": "{{trigger.message.Body}}"
+      },
+      "transitions": [
+        {
+          "event": "noMatch",
+          "conditions": [],
+          "next": "FFf95dff3d9bed206317e382de360ad63f",
+          "uuid": "ae0fb19c-16a1-476f-a039-261615e0ce83"
+        },
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value matches_any_of Let me join group",
+              "type": "contains",
+              "arguments": [
+                "{{trigger.message.Body}}"
+              ],
+              "value": "Let"
+            }
+          ],
+          "next": "FFda8810d603c2a024e09962435c6407ce",
+          "uuid": "8f4ab414-3311-4a32-b8b6-0b798ba1f6db"
+        }
+      ],
+      "sid": "FF3b6e431776b1a44d13c04b11a0ca6a03"
+    },
+    {
+      "name": "Participantflow",
+      "type": "Message",
+      "properties": {
+        "offset": {
+          "x": 500,
+          "y": 110
+        },
+        "body": "Hey there welcome to group Berlin",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": "FF07a1012bd1457b59fd4b45d36e8b5e8c",
+          "uuid": "0603abd1-a30b-4d83-9649-82d8d9a04fbd"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "05e948da-6541-4e26-b3ea-0ad59828f0f8"
+        }
+      ],
+      "sid": "FFda8810d603c2a024e09962435c6407ce"
+    },
+    {
+      "name": "send_message_2",
+      "type": "Message",
+      "properties": {
+        "offset": {
+          "x": 10,
+          "y": 150
+        },
+        "body": "Hey there welcome to WhatsFood. Great lets get food for your group.\n\nPlease forward the link to everyone joining:\nhttps://wa.me/14155238886?text=Let%20me%20join%20group%20Berlin",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": "FF0b763916ce895e271224fee8d922e0a8",
+          "uuid": "7c133ac2-0f58-4281-95f4-3f73aa1df6f0"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "75f0163d-e837-4e74-88d5-3e27be5c88a3"
+        }
+      ],
+      "sid": "FF62d3958a51e4b70fd0335ef8a2f4e2b5"
+    },
+    {
+      "name": "send_and_reply_2",
+      "type": "MessagePrompt",
+      "properties": {
+        "offset": {
+          "x": 10,
+          "y": 400
+        },
+        "body": "Great! Where would you like to order from?",
+        "from": "{{flow.channel.address}}",
+        "timeout": 1800,
+        "save_response_as": null,
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": "FF4eb22b17865f0ba4383deec700893655",
+          "uuid": "eed63e93-8adb-4753-9cc2-0a7dcb24b0ba"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FFa9a8609e27b29cb6f0bf893b09caa51e",
+          "uuid": "e83eeb90-01c2-4ce8-b67b-605a2cf9ce08"
+        },
+        {
+          "event": "deliveryFailure",
+          "conditions": [],
+          "next": null,
+          "uuid": "988eb9b7-2470-41ed-a0fd-8b9aad3d6360"
+        }
+      ],
+      "sid": "FF0b763916ce895e271224fee8d922e0a8"
+    },
+    {
+      "name": "restonamorg",
+      "type": "SetVariables",
+      "properties": {
+        "offset": {
+          "x": 10,
+          "y": 640
+        },
+        "variables": [
+          {
+            "key": "Restoname",
+            "value": "{{widgets.send_and_reply_2.inbound.Body}}"
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "event": "next",
+          "conditions": [],
+          "next": "FFc14a2b073ea473455fee2617c1d82728",
+          "uuid": "44431249-2dbf-4643-93c8-ab8b48dd613f"
+        }
+      ],
+      "sid": "FF4eb22b17865f0ba4383deec700893655"
+    },
+    {
+      "name": "Copy_of_send_and_reply_2",
+      "type": "MessagePrompt",
+      "properties": {
+        "offset": {
+          "x": 520,
+          "y": 370
+        },
+        "body": "Great! What would you like to order from {{widgets.restonamorg.Variables}}",
+        "from": "{{flow.channel.address}}",
+        "timeout": 1800,
+        "save_response_as": null,
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": "FF6c6cf947d1c97930c56434c7380f99bd",
+          "uuid": "54525add-4010-4d0f-b59b-5d921d26e2e3"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FFa9a8609e27b29cb6f0bf893b09caa51e",
+          "uuid": "5ecc4c10-cb0b-471e-b5c4-1f668b53ed72"
+        },
+        {
+          "event": "deliveryFailure",
+          "conditions": [],
+          "next": null,
+          "uuid": "32a78471-bb9a-4358-8726-22aae8b01cfd"
+        }
+      ],
+      "sid": "FF07a1012bd1457b59fd4b45d36e8b5e8c"
+    },
+    {
+      "name": "send_and_reply_3",
+      "type": "MessagePrompt",
+      "properties": {
+        "offset": {
+          "x": 20,
+          "y": 870
+        },
+        "body": "Great choice! You have chosen {{widgets.restonamorg.Variables}} \n\nWhat would you like to order?",
+        "from": "{{flow.channel.address}}",
+        "timeout": 1800,
+        "save_response_as": null,
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": "FF632de744a78dd5e0a930dfb25d607836",
+          "uuid": "8557198f-3c26-4059-a664-891dab43b2c6"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FFa9a8609e27b29cb6f0bf893b09caa51e",
+          "uuid": "5173145d-b7cd-457b-b0a6-07e52b599eff"
+        },
+        {
+          "event": "deliveryFailure",
+          "conditions": [],
+          "next": null,
+          "uuid": "20a814b8-b84e-40b5-8279-00aabbbac11c"
+        }
+      ],
+      "sid": "FFc14a2b073ea473455fee2617c1d82728"
+    },
+    {
+      "name": "orgorder",
+      "type": "SetVariables",
+      "properties": {
+        "offset": {
+          "x": 30,
+          "y": 1150
+        },
+        "variables": [
+          {
+            "key": "orgorder",
+            "value": "{{widgets.send_and_reply_3.inbound.Body}}"
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "event": "next",
+          "conditions": [],
+          "next": "FF57cc5d4853f485cb8faf74214ddc7438",
+          "uuid": "fc20279f-5024-43ec-8556-0cd5f7c616b5"
+        }
+      ],
+      "sid": "FF632de744a78dd5e0a930dfb25d607836"
+    },
+    {
+      "name": "send_message_5",
+      "type": "Message",
+      "properties": {
+        "offset": {
+          "x": 30,
+          "y": 1380
+        },
+        "body": "Great you have ordered {{widgets.orgorder.Variables}}  from {{widgets.restonamorg.Variables}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": null,
+          "uuid": "b8f5ea21-8c5c-42c1-bea4-954a8fe27e00"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "bd00bab2-cf58-4f1c-b1d2-df39b3abd095"
+        }
+      ],
+      "sid": "FF57cc5d4853f485cb8faf74214ddc7438"
+    },
+    {
+      "name": "Copy_of_send_and_reply_3",
+      "type": "MessagePrompt",
+      "properties": {
+        "offset": {
+          "x": 520,
+          "y": 630
+        },
+        "body": "Great choice! You can order from {{widgets.restonamorg.Variables}} \n\nWhat would you like to order?",
+        "from": "{{flow.channel.address}}",
+        "timeout": 1800,
+        "save_response_as": null,
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": "FFb84231670390eaadff12712fb40c4e60",
+          "uuid": "df0b4afc-2468-43f7-99b5-5f3367fe9096"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FFa9a8609e27b29cb6f0bf893b09caa51e",
+          "uuid": "379b97df-4582-466b-a6f5-6fc43b9dca61"
+        },
+        {
+          "event": "deliveryFailure",
+          "conditions": [],
+          "next": null,
+          "uuid": "3156207e-bbd4-459a-9615-c26b1007d392"
+        }
+      ],
+      "sid": "FF6c6cf947d1c97930c56434c7380f99bd"
+    },
+    {
+      "name": "b1",
+      "type": "SetVariables",
+      "properties": {
+        "offset": {
+          "x": 530,
+          "y": 870
+        },
+        "variables": [
+          {
+            "key": "b1",
+            "value": "{{widgets.send_and_reply_3.inbound.Body}}",
+            "index": "0"
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "event": "next",
+          "conditions": [],
+          "next": "FFe445a408305bf84d9be3369addcaad74",
+          "uuid": "a592a468-8f01-4bdc-b94e-0e67f741f33a"
+        }
+      ],
+      "sid": "FFb84231670390eaadff12712fb40c4e60"
+    },
+    {
+      "name": "Copy_of_send_message_5",
+      "type": "Message",
+      "properties": {
+        "offset": {
+          "x": 530,
+          "y": 1120
+        },
+        "body": "Great you have ordered {{widgets.b1.Variables}}  from {{widgets.restonamorg.Variables}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "media_url": null,
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "attributes": null
+      },
+      "transitions": [
+        {
+          "event": "sent",
+          "conditions": [],
+          "next": null,
+          "uuid": "a7721fb9-551e-456f-9ccb-ec38a965e0aa"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "7ec3a9ef-e4ad-4512-ab89-7111e1285c23"
+        }
+      ],
+      "sid": "FFe445a408305bf84d9be3369addcaad74"
+    },
+    {
+      "name": "split_1",
+      "type": "Branch",
+      "properties": {
+        "offset": {
+          "x": 520,
+          "y": 1460
+        },
+        "input": null
+      },
+      "transitions": [
+        {
+          "event": "noMatch",
+          "conditions": [],
+          "next": null,
+          "uuid": "04bca560-7213-4a72-85ac-b5ae5d891917"
+        }
+      ],
+      "sid": "FF79f66c29ff44af9eebf122c1c689f40f"
+    }
+  ]
+}
