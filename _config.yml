@@ -1,5 +1,5 @@
 #page title
-page_title                                : Food Mate                                # Automatically populates with app name if not set and if iOS app ID is set. Otherwise enter manually.
+page_title                                : WhatsFood                               # Automatically populates with app name if not set and if iOS app ID is set. Otherwise enter manually.
 
 # App Info
 ios_app_id                                : 1234793120                                # Required. Enter iOS app ID to automatically populate name, price and icons (e.g. 718043190).
@@ -9,7 +9,7 @@ playstore_link                            :  https://wa.me/14155238886?text=I%20
 presskit_download_link                    :                                           # Enter a link to downloadable file or (e.g. public Dropbox link to a .zip file). 
                                                                                       # Or upload your press kit file to assets and set path accordingly (e.g. "assets/your_press_kit.zip").
 
-app_icon                                  : assets/appicon.jpg                      # Automatically populates if not set and if iOS app ID is set.  Otherwise enter path to icon file manually.
+app_icon                                  : assets/appicon.png                      # Automatically populates if not set and if iOS app ID is set.  Otherwise enter path to icon file manually.
 app_name                                  : Food Mate                               # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
 app_price                                 : Free                                    # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
 app_description                           : Easy food orders for groups.
@@ -54,7 +54,7 @@ features                                  :
     description                           : Integration with major delivery networks avoid manual & error prone re-entry of the order.
     fontawesome_icon_name                 : magic
 
-  - title                                 : Payments & Bill Splitting (soon)
+  - title                                 : Payments & Splitting (soon)
     description                           : Fully integrated payments including the nasty part to split the bill according to orders.
     fontawesome_icon_name                 : credit-card
 
@@ -71,7 +71,7 @@ device_color                              : black                               
 
 body_background_color                     : "#ffffff"
 
-link_color                                : "#1d63ea"
+link_color                                : "#365aa1"
 
 app_title_color                           : "#ffffff"
 app_price_color                           : "#ffffff"
@@ -80,7 +80,7 @@ app_description_color                     : "#ffffff"
 feature_title_color                       : "#000000"
 feature_text_color                        : "#666666"
 
-feature_icons_foreground_color            : "#1d63ea"
+feature_icons_foreground_color            : "#365aa1"
 feature_icons_background_color            : "#e6e6e6"
 
 social_icons_foreground_color             : "#666666"
